@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('quality_seals', function (Blueprint $table) {
             $table->id();
-            $table->string('quality_seal_type');
+            $table->string('name');
         });
     }
 
