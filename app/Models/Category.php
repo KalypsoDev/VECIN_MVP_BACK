@@ -9,4 +9,9 @@ class Category extends Model
 {
     use HasFactory;
     protected $guarded = []; //indicamos que campos de la tabla no se puede manipular a traves del modelo con guarded
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
