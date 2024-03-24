@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('user_producer_id');
-            $table->foreign('user_producer_id')->references('id')->on('users')->where('role_id', '=', 3);
+            $table->foreign('user_producer_id')->references('id')->on('users')->where('role_id', '=', 3)->onDelete('cascade');
             $table->string('name');
             $table->text('description');
-            $table->date('best_before'); //comprobar que sea date
-            $table->double('price');
+            $table->string('best_before'); //Texto libre con recomendaciones de conservación > Consumir antes de x días/semanas
+            $table->decimal('product_price', 8, 2);
             $table->tinyInteger('quantity');
             $table->string('location');
             $table->string('main_image');
