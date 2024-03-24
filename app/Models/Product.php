@@ -4,24 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
     use HasFactory;
     protected $guarded =  [];
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_producer_id');
     }
 
-    public function productQualitySeal()
+    public function qualitySeals(): BelongsToMany
     {
-        return $this->hasMany(ProductQualitySeal::class, 'quality_seal_id');
+        // Asegúrate de que los nombres de las claves foráneas están correctos.
+        // Si sigues la convención de Laravel, no necesitarías especificar las claves foráneas.
+        return $this->belongsToMany(QualitySeal::class, 'product_quality_seals', 'product_id', 'quality_seal_id');
     }
 }
