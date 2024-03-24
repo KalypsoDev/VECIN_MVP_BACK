@@ -9,4 +9,14 @@ class ProductQualitySeal extends Model
 {
     use HasFactory;
     protected $guarded =  [];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function qualitySeal()
+    {
+        return $this->belongsTo(QualitySeal::class, 'quality_seal_id');
+    }
 }

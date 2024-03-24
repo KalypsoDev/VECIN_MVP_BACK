@@ -19,4 +19,9 @@ class Product extends Model
     {
         return $this->belongsTo(User::class, 'user_producer_id');
     }
+
+    public function productQualitySeal()
+    {
+        return $this->hasMany(ProductQualitySeal::class, 'quality_seal_id');
+    }
 }
