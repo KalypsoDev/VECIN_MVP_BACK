@@ -44,4 +44,8 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'user_producer_id');
+    }
 }
