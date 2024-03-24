@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('product_quality_seals', function (Blueprint $table) {
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->unsignedBigInteger('quality_seal_id')->nullable(); // pueden no tener certificado??
-            $table->foreign('quality_seal_id')->references('id')->on('quality_seals');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('quality_seal_id');
+            $table->foreign('quality_seal_id')->references('id')->on('quality_seals')->onDelete('cascade');
             $table->timestamps();
+
+            $table->primary(['product_id', 'quality_seal_id']);
         });
     }
 
