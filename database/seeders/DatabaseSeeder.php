@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             CategorySeeder::class,
-            QualitySealSeeder::class
+            QualitySealSeeder::class,
+            UserSeeder::class
         ]);
     }
 }
