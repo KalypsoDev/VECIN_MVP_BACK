@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('best_before'); //Texto libre con recomendaciones de conservación > Consumir antes de x días/semanas
-            $table->decimal('product_price', 8, 2);
+            $table->decimal('price', 8, 2);
             $table->tinyInteger('quantity');
             $table->string('location');
             $table->string('main_image');

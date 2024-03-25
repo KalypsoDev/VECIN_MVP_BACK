@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             QualitySealSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            ProductSeeder::class
         ]);
     }
 }
