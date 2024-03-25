@@ -24,9 +24,10 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request): JsonResponse
     {
-        Product::create($request->all());
+        $product = Product::create($request->all());
         return response()->json([
-            'success' => true
+            'success' => true,
+            'data' => $product
         ], 201);
     }
 
@@ -57,7 +58,8 @@ class ProductController extends Controller
         $product->save();
 
         return response()->json([
-            'success' => true
+            'success' => true,
+            'data' => $product
         ], 200);
     }
 
