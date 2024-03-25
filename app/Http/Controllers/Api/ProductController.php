@@ -41,9 +41,23 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->best_before = $request->best_before;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->location = $request->location;
+        $product->main_image = $request->main_image;
+        $product->status = $request->status;
+
+        $product->save();
+
+        return response()->json([
+            'success' => true
+        ], 200);
     }
 
     /**
